@@ -1,0 +1,56 @@
+
+
+<!--
+<div class="row" *ngFor="let p of products$ | async"> 
+
+    <div class="card" style="width: 15rem;">
+        <img class="card-img-top" [src]="p.imageUrl" alt="Card image cap" style="height:250px">
+        <div class="card-body">
+          <h5 class="card-title">{{p.category}}</h5>
+          <p class="card-text">{{p.title}}</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+
+</div>   
+-->
+<div class="row">
+ <div class="col-md-3">
+    <app-products-filter [category] = 'category'></app-products-filter>
+ </div>
+
+ <div class="col-md-9">
+    <div class="row">
+        <ng-container *ngFor="let p of filterProducts; let i=index"> 
+                <div class="col-md-6">
+                       <app-product-card [product]="p"></app-product-card>
+                      </div>
+                      <div *ngIf="(i + 1) % 2 == 0" class="w-100"> </div>
+        </ng-container>
+    </div>
+  </div>
+</div>
+
+
+
+    
+<!--
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let p of products$ | async; let i=index"> 
+                <div class="col-md-6">
+                        <div class="card" style="width: 15rem;">
+                            <img class="card-img-top" [src]="p.imageUrl" alt="Card image cap" style="height:250px">
+                            <div class="card-body">
+                              <h5 class="card-title">{{p.category}}</h5>
+                              <p class="card-text">{{p.title}}</p>
+                              <a href="#" class="btn btn-primary">Add to Cart</a>
+                            </div>
+                          </div>
+                      </div>
+                      <div *ngIf="(i + 1) % 2 == 0" class="w-100"> </div>
+        </ng-container>
+    </div>
+</div>
+
+-->

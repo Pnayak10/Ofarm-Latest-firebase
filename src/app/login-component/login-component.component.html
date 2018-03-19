@@ -1,0 +1,48 @@
+<button class="btn btn-primary" (click)="login()">
+Login With Google
+</button>
+
+<button class="btn btn-primary" (click)="loginWithTwitter()">
+    Login With Twitter
+    </button>
+
+    <button class="btn btn-primary" (click)="loginWithGithub()">
+        Login With Git Hub
+        </button>
+<div class="container">
+  <div class="row">
+    <div [hidden]="user">
+      <h1>Sign In with Your Phone Number</h1>
+      <label for="phone">Phone Number</label><br>
+      <div class="Phone-num">
+      <div class="col-md-1">  
+        <input type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="1"    maxlength="2">
+      </div>
+      <div class="col-md-1"> 
+          <input type="text" [(ngModel)]="phoneNumber.area"     class="input" placeholder="949"  maxlength="3">
+      </div>
+      <div class="col-md-1">
+          <input type="text" [(ngModel)]="phoneNumber.prefix"   class="input" placeholder="555"  maxlength="3">  
+      </div>
+      <div class="col-md-1">
+          <input type="text" [(ngModel)]="phoneNumber.line"     class="input" placeholder="5555" maxlength="4">  
+      </div>
+    </div>
+     
+     
+     
+      <div id="recaptcha-container" style="clear:both"></div>
+      <button (click)="sendLoginCode()">SMS Text Login Code</button>
+      <div *ngIf="windowRef.confirmationResult">
+        <hr>
+        <label for="code">Enter your Verification Code Here</label><br>
+        <input type="text" name="code" [(ngModel)]="verificationCode">
+        <button (click)="verifyLoginCode()">Verify</button>
+      </div>
+    </div>
+    <div *ngIf="user">
+      You have successfully logged in with your phone number!
+      UserId: {{ user?.uid }}
+    </div>
+  </div>
+</div>
